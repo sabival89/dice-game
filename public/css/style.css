@@ -1,0 +1,480 @@
+*{margin: 0; padding: 0; box-sizing: border-box;  }
+a{text-decoration: none;}
+.clearfix::after {content: ""; display: table;clear: both;}
+
+/* Main body */
+body {
+    position: relative;
+    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(0, 0, 0, 0.4)), url(../img/wood.jpg);
+    background-color: #000000;
+    background-size: cover;
+    background-position: center;
+    font-family: Lato;
+    font-weight: 300;
+    position: relative;
+    height: 100vh;
+}
+
+/* Container styling */
+.container {
+    margin: 0 auto;
+    max-width: 800px;
+    transform: translate(0%, 5%);
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.main-stage,
+.control-panel{
+    float: left;
+}
+
+.main-stage{width: 80%;}
+
+/* Main Stage area */
+.stage-play-area{
+    position: relative;
+    height: 300px;
+    background-color: rgba(0,0,0,.8);
+}
+
+/* Play Scene styling */
+.scene{
+    position: relative;
+    top: 20%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    perspective: 400px;
+}
+
+/* Players pane styling */
+.players{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.player-0-panel,
+.player-1-panel {
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: background-color .4s ease-in-out;
+}
+
+/* Players */
+.player-name {
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 100;
+    margin-bottom: 10px;
+    position: relative;
+    color: #c5c5c5;
+}
+/* Player score */
+.player-score {
+    text-align: center;
+    font-size: 60px;
+    font-weight: 100;
+    color: #4285f4;
+}
+
+/* Active player background */
+.active { 
+    background-color: rgba(0,0,0,1); 
+}
+
+.active .player-name, 
+.active .player-current-label,
+.active .player-current-score { 
+    font-weight: 300;
+    color: #ffffff 
+}
+
+/* Active player icon */
+.active .player-name::before {
+    content: "\2022";
+    display: inline-block;
+    font-size: 47px;
+    position: absolute;
+    color: #42f468;
+    top: -14px;
+    left: 10px;
+    transition: all .4s ease-in-out;
+}
+
+/* Player identifier */
+#name-0:after{content: 'player 1';}
+
+#name-1:after{content: 'player 2';}
+
+#name-0:after,
+#name-1:after{
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #4285f4;
+    font-weight: bold;
+}
+
+/* Player live score area */
+.player-current-box {
+    background-color: rgba(0,0,0,.7);
+    color: #c5c5c5;
+    width: 40%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Player live score label */
+.player-current-label {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #c5c5c5;
+}
+
+/* Player live score, score */
+.player-current-score {
+    font-size: 24px;
+    color: #c5c5c5;
+}
+
+
+/* Control Panel styling */
+.control-panel{
+    position: absolute;
+    right: 0px;
+    width: 20%;
+    height: 100%;
+    background-color: rgba(32,112,243,.2);
+    padding: 10px;
+}
+.control-panel .control-buttons a,
+.control-panel .control-buttons button {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: #f5f5f5;
+    background: none;
+    font-family: Lato;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    line-height: 1.5em;
+    padding: 5px 14px;
+    border: none;
+    text-align: center;
+}
+
+.control-panel .control-buttons a span::after,
+.control-panel .control-buttons button span::after{
+    content: "";
+    margin: 5px auto;
+    display: block;
+    width: 0%;
+    height: .5px;
+    background-color:transparent;
+    transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+}
+
+.control-panel .control-buttons button:disabled{
+    color: #a5a5a5;
+    border-color: #a5a5a5;
+    cursor: not-allowed;
+}
+
+.control-panel .control-buttons a:hover span::after ,
+.control-panel .control-buttons button:hover span::after{
+    width: 50%;
+    background-color: #ffffff;
+}
+
+.control-panel .control-buttons a:hover,
+.control-panel button:not(:disabled):hover { 
+    font-weight: 600; 
+}
+
+.control-panel button:focus {outline: none;}
+
+.control-panel .control-buttons a:active,
+.control-panel .control-buttons button:not(:disabled):active{color: rgba(32,112,243,1);}
+.control-panel div:not(:last-child){ border-bottom: 1px solid #000000;}
+.control-panel div{padding: 20px 0 20px 0;}
+
+/* Winning score Input text */
+.control-panel input.win-score::placeholder{ color: rgba(255,255,255,.5); text-align: left;}
+.control-panel input.win-score {
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Lato';
+    text-align: center;
+    padding: 5px 10px;
+    width: 100%;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: .5px solid rgba(255,255,255,.3);
+    border-radius: 2px;
+}
+
+/* Default win score pane styling */
+.current-win-score{
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 60px;
+    padding: 10px 5px;
+    color: rgba(255,255,255,.4);
+    font-weight: 600;
+}
+
+.current-win-score::after{
+    content: "WIN SCORE";
+    display: block;
+    font-size: 8px;
+    padding-top: 5px;
+    letter-spacing: 1px;
+    color: rgba(124, 214, 124, .8);
+}
+
+.win-score:focus { outline: none; }
+.winner{ background-color: rgba(21,191,57, .1); }
+.winner .player-name { font-weight: 300; color: #15bf39 }
+.winner .player-score { color: #ffffff }
+.winner .player-current-box { visibility: hidden; }
+
+/* Cube styling */
+#dice-1 { top: -10px; }
+#dice-2 { top: 30px; }
+
+/* Set cube image default background */
+.scene img{ background: #ffffff; width: 80px; height: 80px; border-radius: 10px;}
+
+.cube_1, 
+.cube_2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transform: translateZ(50px) rotateX(0deg);
+    transition: all .4s ease-in-out;
+    animation: .3s ease-in-out rotateTranslate;
+}
+
+.cube_face {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+/* Game rules styling */
+.game-rules{
+    z-index: 1000;
+    position: fixed;
+    bottom: -800px;
+    width: 100%;
+    background: #ffffff;
+    padding: 50px 50px;
+    box-shadow: 0px -20px 20px #000000;
+}
+
+.game-rules h1{
+    font-weight: 300;
+    font-size: 32px;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+.game-rules h3{
+    font-weight: 300;
+    font-size: 24px;
+    text-decoration: underline;
+    margin-top: 20px;
+    padding: 5px 0;
+}
+
+.game-rules ol li{
+    margin-left: 20px;
+}
+
+.game-rules > ul > li{
+    list-style: none;
+}
+
+.game-rules li span,
+.game-rules p{
+    line-height: 1.5em;
+    font-size: 16px;
+}
+
+.game-rules li ul{
+    list-style: circle;
+    margin-left: 20px;
+}
+
+.game-rules li p{
+    padding: 0 0 10px 0;
+}
+
+.btn-close{
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    font-weight: bold;
+    font-family: Lato;
+    letter-spacing: 2px;
+    color: #222222;
+}
+
+#gameRules:target{bottom: 0px;}
+#gameRules{transition: bottom .2s ease-in-out;}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+footer div.footer-copyright span{
+    color: hsl(0, 0%, 62%);
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Modal styling */
+.modal-container{
+    z-index: 3000;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+.modal-content{
+    min-width: 200px;
+    max-width: 500px;
+    margin : 10% auto;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.modal-content input[type='text']{
+    display: block;
+    padding: 12px 8px;
+    border: 1px solid #e3e3e3;
+    width: 100%;
+}
+
+.modal-content button{
+    margin-top: 10px;
+    background-color: rgb(23, 49, 70, 1);
+    display: block;
+    padding: 12px 8px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-content button:disabled{
+    background-color: rgb(23, 49, 70, .5);
+    cursor: not-allowed;
+}
+
+.modal-content #userForm strong{
+    display: block;
+    padding: 7px;
+    color: #5e131b;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background-color: #ffdcdc;
+    border-radius: 5px;
+}
+
+.modal-overlay{
+    z-index: 2000;
+    background-color: rgba(0,0,0,.9);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+div.notification{
+    z-index: 4000;
+    position: fixed;
+    top: -100px;
+    left: 34%;
+    width: 30%;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 7px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    border: 1px solid transparent;
+    line-height: 1.3em;
+    transition: top .2s ease-in-out;
+    font-weight: 500;
+}
+
+div.notification.show{
+    top: -5px;
+}
+
+div.notification.info{
+    color: #6b5208;
+    background-color: #fff5d3;
+    border-color: #f1dfa9;
+}
+
+div.notification.success{
+    background-color: #e2f8e7;
+    color: #0f4e1d;
+    border-color: #a7d1b1;
+}
+
+div.notification.danger{
+    color: #66131b;
+    background-color: #fcd4d7;
+    border-color: #dfa3a9;
+}
+
+/* Cube animation */
+/* Cube go-to position on class active*/
+.cube_1.show-1, .cube_2.show-1{ transform: translateZ(-50px) rotateY(   0deg); }
+.cube_1.show-2, .cube_2.show-2{ transform: translateZ(-50px) rotateY( -90deg); }
+.cube_1.show-3, .cube_2.show-3{ transform: translateZ(-50px) rotateY(-180deg); }
+.cube_1.show-4, .cube_2.show-4{ transform: translateZ(-50px) rotateY(  90deg); }
+.cube_1.show-5, .cube_2.show-5{ transform: translateZ(-50px) rotateX( -90deg); }
+.cube_1.show-6, .cube_2.show-6{ transform: translateZ(-50px) rotateX(  90deg); }
+
+/* Cube default position */
+.cube_face--1{ transform: rotateY(  0deg) translateZ(40px); }
+.cube_face--2{ transform: rotateY( 90deg) translateZ(40px); }
+.cube_face--3{ transform: rotateY(180deg) translateZ(40px); }
+.cube_face--4{ transform: rotateY(-90deg) translateZ(40px); }
+.cube_face--5{ transform: rotateX( 90deg) translateZ(40px); }
+.cube_face--6{ transform: rotateX(-90deg) translateZ(40px); }
+
+/* Cube Animation */
+@keyframes rotateTranslate {
+    0% {transform: translateZ(50px) rotateY(0deg);}
+    100% {transform: translateZ(-50px) rotateY(90deg);}
+}

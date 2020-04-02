@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+        <title>Multiplayer Dice Game</title>
+    </head>
+
+    <body>
+        <!-- Main Content -->
+        <main class="container clearfix">
+            <section class="main-content clearfix">
+                <div class="main-stage">
+                    <div class="stage-play-area">
+                        <!-- Dice images -->
+                        <div class="scene">
+                            <div class="cube_1" id="dice-1">
+                                <img src="img/dice-1.png" alt="Dice" class="cube_face cube_face--1">
+                                <img src="img/dice-2.png" alt="Dice" class="cube_face cube_face--2">
+                                <img src="img/dice-3.png" alt="Dice" class="cube_face cube_face--3">
+                                <img src="img/dice-4.png" alt="Dice" class="cube_face cube_face--4">
+                                <img src="img/dice-5.png" alt="Dice" class="cube_face cube_face--5">
+                                <img src="img/dice-6.png" alt="Dice" class="cube_face cube_face--6">
+                            </div>
+                        </div>
+                        <div class="scene">
+                            <div class="cube_2" id="dice-2">
+                                <img src="img/dice-1.png" alt="Dice" class="cube_face cube_face--1">
+                                <img src="img/dice-2.png" alt="Dice" class="cube_face cube_face--2">
+                                <img src="img/dice-3.png" alt="Dice" class="cube_face cube_face--3">
+                                <img src="img/dice-4.png" alt="Dice" class="cube_face cube_face--4">
+                                <img src="img/dice-5.png" alt="Dice" class="cube_face cube_face--5">
+                                <img src="img/dice-6.png" alt="Dice" class="cube_face cube_face--6">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="players">
+                        <div class="player-0-panel">
+                            <div class="player-name" id="name-0">-</div>
+                            <div class="player-score" id="score-0">0</div>
+                            <div class="player-current-box">
+                                <div class="player-current-label">Live Score</div>
+                                <div class="player-current-score" id="current-0">0</div>
+                            </div>
+                        </div>
+                        
+                        <div class="player-1-panel">
+                            <div class="player-name" id="name-1">-</div>
+                            <div class="player-score" id="score-1">0</div>
+                            <div class="player-current-box">
+                                <div class="player-current-label">Live Score</div>
+                                <div class="player-current-score" id="current-1">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="control-panel">
+                    <div class="win-score-pane">
+                        <label for="winScore"></label>
+                        <input type="number" placeholder="Set Win score" class="win-score" id="winScore" autofocus step="10" max="100" min="10">
+                        <span class="current-win-score">50</span>
+                    </div>
+    
+                    <div class="control-buttons">
+                        <button class="btn-new"><span>New Game</span></button>
+                        <button class="btn-roll"><span>Roll Dice</span></button>
+                        <button class="btn-save"><span>Save Score</span></button>
+                        <button class="btn-exit"><span>Exit</span></button>
+                        <a href="#gameRules" class="btn-help"><span>Rules</span></a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Game Rules Section -->
+        <section id="gameRules" class="game-rules">
+            <h1>How To Play/Game Rules</h1>
+            <ul>
+                <li>
+                    <h3>Rules</h3>
+                    <ol>
+                        <li><span>A player looses his current score when either one of the dice is a 1.</span></li>
+                        <li><span>A player looses his entire score when he rolls two 6 in a row. After that, it's the next player's turn</span></li>
+                        <li><span>A player who looses and click's on a "New Game" button doesn't get to be the first player</span></li>
+                        <li><span>A player cannot click on the "New Game" button when the game is in active session</span></li>
+                        <li><span>A player cannot set default score less than 10 and greater than 100</span></li>
+                    </ol>
+                </li>
+                <li>
+                    <h3>How to play</h3>
+                    <ul>
+                        <li>
+                            <p>
+                                As soon as the page load's a green circle icon will be displayed on a players panel which means that it is the player's turn to play.
+                                The active player continously clicks on the "Roll Dice" button to roll a dice and earn points. If the active player rolls a "1" then it becomes the next player's turn. <br>
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                The "Save Progress" button is used to save your points earned so that you don't loose every point when you roll a 1. <br>
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                The winning score is set to 100 by default and this can be modified by entering any value of your choice in the "SET WIN SCORE" input field on the control panel.
+                            </p>
+                        </li>
+                    </ul>                    
+                </li>
+            </ul>
+            <a href="#" class="btn-close">[x] Close</a>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="footer-copyright">
+                <span>© Valentine Aduaka 2020.</span>
+            </div>
+        </footer>
+
+        <!-- Modal -->
+        <div class="modal-container">
+            <div class="modal-content">
+                <form action="" id="userForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter your nickname" id="playername" name="" value="" autofocus required aria-required>
+                        <button type="submit"> play </button>      
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div class="modal-overlay"></div>
+
+        <!-- Notification Pane -->
+        <div class="notification"></div>
+
+        <!-- Javascript -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
