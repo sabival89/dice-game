@@ -13,7 +13,7 @@ $ cd dicegame
 ```
 3. Install dicegame dependencies
 ```bash
-npm init
+npm install
 ```
 ## Usage
 1. Boot up the application
