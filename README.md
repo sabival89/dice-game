@@ -20,4 +20,5 @@ npm install
 ```bash
 node server.js
 ```
-2. Open two browser instances and provide your name in the dialog box
+2. Open two browser instances, provide your name in the dialog box and play
+
