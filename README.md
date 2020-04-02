@@ -9,15 +9,16 @@ Node.js®
 1. Download the project
 2. Move into the root directory via cmd
 ```bash
-$ cd dicegame
+$ cd dice-game
 ```
 3. Install dicegame dependencies
 ```bash
-npm init
+npm install
 ```
 ## Usage
 1. Boot up the application
 ```bash
 node server.js
 ```
-2. Open two browser instances and provide your name in the dialog box
+2. Open two browser instances, provide your name in the dialog box and play
+
