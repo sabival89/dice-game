@@ -9,7 +9,7 @@ Node.js®
 1. Download the project
 2. Move into the root directory via cmd
 ```bash
-$ cd dicegame
+$ cd dice-game
 ```
 3. Install dicegame dependencies
 ```bash
