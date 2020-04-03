@@ -1,10 +1,15 @@
-/* Game client side utility functions */
+/**
+ * @author Valentine Aduaka
+*/
 
+/**
+ * Game client side utility functions 
+*/
 // Capitalize initial character of a given word
 const ucFirst = (word) => {
-    if (typeof word !== 'string') return ''
-    return word.charAt(0).toUpperCase() + word.slice(1)
-}
+    if (typeof word !== 'string') return '';
+    return word.charAt(0).toUpperCase() + word.slice(1);
+};
 
 // Notification handler
 const notification = (obj, message, alertType, timeout = "") => {

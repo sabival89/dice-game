@@ -1,3 +1,6 @@
+/**
+ * @author Valentine Aduaka
+*/
 // Dependencies
 const express   = require('express');
 const path      = require('path');
@@ -195,7 +198,7 @@ let broadcastPlayernames = () => {
     let options = {
         players: players,
         connections: connections
-    }
+    };
 
     io.emit('show players', options);
 };

@@ -1,54 +1,17 @@
+/**
+ * @author Valentine Aduaka
+*/
+
 // Instantiate socket.io
 let socket = io();
 
 /* Define Dice Object */
 let Dice = {};
 
-let audio = {
-    /* Sound files from 
-        https://www.zapsplat.com
-     */
-    files: {
-        gameSound: '../audio/game-sound.mp3',
-        next: '../audio/next.mp3',
-        winner: '../audio/winner.mp3',
-        save: '../audio/save.mp3',
-        roll: '../audio/dice-roll.mp3'
-    },
-
-    trigger: ( file ) => {
-        let self = new Audio(file);
-        self.volume = .1;
-        return self;
-    },
-
-    winner: () => audio.trigger(audio.files.winner),
-    save: () => audio.trigger(audio.files.save),
-    roll: () => audio.trigger(audio.files.roll),
-    next: () => audio.trigger(audio.files.next),
-    gameSound: ( mute ) => {
-        let obj = audio.trigger(audio.files.gameSound);
-        if (mute) {
-            obj.muted = true;
-        } else {
-            obj.muted = false;
-        }
-
-        return obj;
-    }
-};
-
-// Initialize Dice object properties
-Dice.scores, 
-Dice.roundScore, 
-Dice.activePlayer, 
-Dice.isGameActive, 
-Dice.lastDice,
-Dice.defaultWinScore = 100,
-Dice.cube_1 = document.querySelector('.cube_1'),
-Dice.cube_2 = document.querySelector('.cube_2')
+// Initialize Dice properties
 Dice.previousClass = [];
-
+Dice.cube_1 = document.querySelector('.cube_1');
+Dice.cube_2 = document.querySelector('.cube_2');
 Dice.dice_1 = document.getElementById('dice-1');
 Dice.dice_2 = document.getElementById('dice-2');
 Dice.name_0 = document.getElementById('name-0');
@@ -58,6 +21,7 @@ Dice.score_1 = document.getElementById('score-1');
 Dice.current_0 = document.getElementById('current-0');
 Dice.current_1 = document.getElementById('current-1');
 Dice.player_0_panel = document.querySelector('.player-0-panel');
+Dice.player_1_panel = document.querySelector('.player-1-panel');
 Dice.player_1_panel = document.querySelector('.player-1-panel');
 Dice.currentWinScore = document.querySelector('.current-win-score');
 
@@ -137,7 +101,7 @@ Dice.initializeGameComponents = ( game = "") => {
     // Enable buttons
     $_.btn_roll.removeAttribute('disabled');
     $_.btn_save.removeAttribute('disabled');
-}
+};
 
 Dice.awaitingConnection = ( data ) => {
     let $_ = Dice;
@@ -274,7 +238,7 @@ socket.on('new game', (game, player) => {
 });
 
 // Initilaize game components
-socket.on('game initialized', (game) => {Dice.initializeGameComponents( game )});
+socket.on('game initialized', (game) => Dice.initializeGameComponents( game ));
 
 // Save player's score
 socket.on('save score', () => Dice.nextPlayer());
