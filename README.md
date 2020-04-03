@@ -21,5 +21,6 @@ npm install
 node server.js
 ```
 2. Open two browser instances, provide your name in the dialog box and play
+
 ![](https://github.com/sabival89/dice-game/blob/master/dicegame.gif)
 
