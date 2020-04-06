@@ -7,7 +7,7 @@ Node.js®
 
 ## Installation
 1. Download the project
-2. Move into the root directory via cmd
+2. Move into the root directory via Command Line
 ```bash
 $ cd dice-game
 ```
